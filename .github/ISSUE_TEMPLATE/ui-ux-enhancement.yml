@@ -1,0 +1,174 @@
+name: 🎨 UI/UX Enhancement
+description: Suggest improvements to the user interface and user experience
+title: "[UI/UX] "
+labels: ["ui-ux", "enhancement", "needs-triage"]
+assignees: ["copilot"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to suggest improvements to how the activities system looks and feels for users.
+        
+        This includes layout changes, visual improvements, and making the system easier to use.
+
+  - type: textarea
+    id: current-experience
+    attributes:
+      label: "📱 Current User Experience Issue"
+      description: "Describe what makes the current interface difficult, confusing, or unpleasant to use"
+      placeholder: |
+        Example: 
+        - The activity cards are too small on mobile devices
+        - Students have trouble finding the sign-up button
+        - The page loads slowly and feels cluttered
+        - Important information is hard to find
+    validations:
+      required: true
+
+  - type: dropdown
+    id: affected-area
+    attributes:
+      label: "🖥️ Which part of the interface needs improvement?"
+      description: "Select the main area that needs enhancement"
+      options:
+        - "Homepage/main activities listing"
+        - "Individual activity details"
+        - "Sign-up process and forms"
+        - "User login/registration"
+        - "Navigation and menu"
+        - "Search and filtering"
+        - "Mobile responsiveness"
+        - "Color scheme and visual design"
+        - "Text and typography"
+        - "Loading and performance"
+        - "Error messages and feedback"
+        - "Overall layout and organization"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: device-focus
+    attributes:
+      label: "📱 Which devices are most affected?"
+      description: "Where is this UI/UX issue most noticeable?"
+      options:
+        - "Mobile phones"
+        - "Tablets"
+        - "Desktop computers"
+        - "All devices equally"
+        - "Specific browsers (specify in description)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-improvement
+    attributes:
+      label: "💡 Proposed Improvement"
+      description: "Describe your vision for how this should look and work better"
+      placeholder: |
+        Example:
+        - Make activity cards larger with clearer text
+        - Add prominent "Sign Up" buttons with better contrast
+        - Reorganize information hierarchy to show most important details first
+        - Use consistent spacing and alignment
+        - Add visual indicators for enrollment status
+    validations:
+      required: true
+
+  - type: dropdown
+    id: user-impact
+    attributes:
+      label: "👥 Who would benefit most from this improvement?"
+      description: "Select the primary beneficiaries"
+      options:
+        - "Students browsing activities"
+        - "Teachers managing activities"
+        - "Parents viewing information"
+        - "New users (first-time visitors)"
+        - "Users with accessibility needs"
+        - "Mobile users specifically"
+        - "All users equally"
+    validations:
+      required: true
+
+  - type: textarea
+    id: success-metrics
+    attributes:
+      label: "📊 How would we measure success?"
+      description: "How would we know if this improvement is working?"
+      placeholder: |
+        Example:
+        - Students can find and sign up for activities 50% faster
+        - Reduced number of support questions about how to navigate
+        - Better mobile user experience ratings
+        - Increased activity sign-up completion rates
+        - Positive feedback from teachers and students
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: "✅ Acceptance Criteria"
+      description: "What specific changes must be implemented for this to be complete?"
+      placeholder: |
+        - [ ] Activity cards are easily readable on mobile devices
+        - [ ] Sign-up buttons are prominent and clearly labeled
+        - [ ] Page loads in under 3 seconds
+        - [ ] All text meets accessibility contrast requirements
+        - [ ] Navigation works consistently across all devices
+        - [ ] Users can complete tasks without confusion
+    validations:
+      required: true
+
+  - type: textarea
+    id: design-preferences
+    attributes:
+      label: "🎨 Design Preferences and Guidelines"
+      description: "Any specific design preferences, school branding, or visual requirements?"
+      placeholder: |
+        Example:
+        - Use school colors (blue and gold)
+        - Maintain professional but friendly appearance
+        - Ensure accessibility for students with visual impairments
+        - Keep consistent with other school websites
+        - Consider Mergington High School branding
+
+  - type: checkboxes
+    id: technical-requirements
+    attributes:
+      label: "🔧 Technical Considerations"
+      description: "Check any technical requirements that apply"
+      options:
+        - label: "Must work on all modern browsers"
+        - label: "Should be responsive for all screen sizes"
+        - label: "Needs to meet accessibility standards (WCAG)"
+        - label: "Should maintain current functionality"
+        - label: "Performance should not be negatively impacted"
+        - label: "Compatible with existing authentication system"
+        - label: "Should use existing CSS framework/styles where possible"
+
+  - type: textarea
+    id: inspiration-examples
+    attributes:
+      label: "🌟 Inspiration or Examples"
+      description: "Are there any websites, apps, or designs that inspire this request?"
+      placeholder: |
+        Example:
+        - Like how [other school website] displays their activities
+        - Similar to how [popular app] handles user registration
+        - Inspired by modern card-based layouts
+        - Reference: [link to design example]
+
+  - type: dropdown
+    id: implementation-scope
+    attributes:
+      label: "🎯 Implementation Scope"
+      description: "How extensive should this change be?"
+      options:
+        - "Small tweak - minor visual adjustments"
+        - "Medium change - redesign specific components"
+        - "Large change - major layout restructuring"
+        - "Complete redesign - overhaul entire interface"
+    validations:
+      required: true

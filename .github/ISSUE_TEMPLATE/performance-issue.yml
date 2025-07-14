@@ -1,0 +1,184 @@
+name: ⚡ Performance Issue
+description: Report slow loading, timeouts, or other performance problems
+title: "[PERFORMANCE] "
+labels: ["performance", "bug", "needs-triage"]
+assignees: ["copilot"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to report issues with system speed, loading times, or performance problems.
+        
+        **Before submitting:** Try refreshing the page and check your internet connection.
+
+  - type: textarea
+    id: performance-issue
+    attributes:
+      label: "🐌 Performance Problem Description"
+      description: "What exactly is slow or not performing well?"
+      placeholder: |
+        Example:
+        - The activities page takes 30+ seconds to load
+        - Sign-up forms freeze when submitting
+        - Website becomes unresponsive during peak usage times
+        - Search takes too long to return results
+    validations:
+      required: true
+
+  - type: dropdown
+    id: performance-area
+    attributes:
+      label: "📍 Where are you experiencing performance issues?"
+      description: "Select the area with performance problems"
+      options:
+        - "Homepage/main activities listing"
+        - "Individual activity pages"
+        - "Sign-up process"
+        - "User login/authentication"
+        - "Search and filtering"
+        - "Overall website navigation"
+        - "All pages equally slow"
+        - "Specific feature (describe below)"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: performance-timing
+    attributes:
+      label: "⏰ When do you notice performance issues?"
+      description: "Is there a pattern to when things are slow?"
+      options:
+        - "All the time"
+        - "During school hours (8 AM - 3 PM)"
+        - "After school hours (3 PM - 6 PM)"
+        - "Evenings and weekends"
+        - "During registration periods"
+        - "When many students are online"
+        - "Randomly/no clear pattern"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: device-performance
+    attributes:
+      label: "📱 Which devices have performance issues?"
+      description: "Where do you see these performance problems?"
+      options:
+        - "Desktop computers"
+        - "Mobile phones"
+        - "Tablets"
+        - "All devices"
+        - "Only older devices"
+        - "Specific browser (specify below)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: performance-measurements
+    attributes:
+      label: "⏱️ Specific Performance Measurements"
+      description: "If possible, provide specific timing information"
+      placeholder: |
+        Example:
+        - Activities page takes 45 seconds to fully load
+        - Sign-up button doesn't respond for 10-15 seconds after clicking
+        - Search results appear after 20+ seconds
+        - Page freezes for 30 seconds before showing content
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce-performance
+    attributes:
+      label: "🔄 Steps to Reproduce Performance Issue"
+      description: "Provide steps to reproduce the performance problem"
+      placeholder: |
+        1. Go to the activities page
+        2. Try to search for "drama"
+        3. Wait for results (takes 20+ seconds)
+        4. Try to click on Drama Club activity
+        5. Page freezes for 30 seconds before loading
+    validations:
+      required: true
+
+  - type: dropdown
+    id: performance-severity
+    attributes:
+      label: "🚨 How severe is this performance issue?"
+      description: "What's the impact on usability?"
+      options:
+        - "🔴 Critical - System unusable"
+        - "🟠 High - Very difficult to use"
+        - "🟡 Medium - Noticeably slow but usable"
+        - "🟢 Low - Slightly slower than expected"
+    validations:
+      required: true
+
+  - type: textarea
+    id: user-impact
+    attributes:
+      label: "👥 User Impact"
+      description: "How does this performance issue affect students, teachers, and daily operations?"
+      placeholder: |
+        Example:
+        - Students give up trying to sign up for activities
+        - Teachers can't access system during class time
+        - Peak registration times become impossible to use
+        - 50+ students affected during enrollment periods
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: "✅ Acceptance Criteria"
+      description: "What performance improvements would resolve this issue?"
+      placeholder: |
+        - [ ] Activities page loads in under 5 seconds
+        - [ ] Search results appear in under 3 seconds
+        - [ ] Sign-up process completes in under 10 seconds
+        - [ ] No freezing or unresponsive behavior
+        - [ ] Consistent performance during peak usage
+        - [ ] Works smoothly on mobile devices
+    validations:
+      required: true
+
+  - type: textarea
+    id: technical-environment
+    attributes:
+      label: "🔧 Technical Environment"
+      description: "Provide details about your setup when experiencing performance issues"
+      placeholder: |
+        Example:
+        - Browser: Chrome 120.0 / Firefox 119.0 / Safari 17.0
+        - Device: iPhone 13 / Windows laptop / MacBook
+        - Internet connection: School WiFi / Home broadband / Mobile data
+        - Time of day: 3:15 PM (right after school)
+        - Number of users: Heavy usage period
+
+  - type: checkboxes
+    id: performance-patterns
+    attributes:
+      label: "📊 Performance Patterns"
+      description: "Check any patterns you've noticed about the performance issues"
+      options:
+        - label: "Issue is worse during peak school hours"
+        - label: "Performance degrades over time (gets slower the longer you use it)"
+        - label: "Problem occurs with specific activities or content"
+        - label: "Issue happens only on mobile devices"
+        - label: "Performance varies significantly between different browsers"
+        - label: "Problem started after a recent update or change"
+        - label: "Issue is reproducible every time"
+
+  - type: textarea
+    id: workarounds-tried
+    attributes:
+      label: "🛠️ Workarounds Attempted"
+      description: "What have you tried to resolve or work around this performance issue?"
+      placeholder: |
+        Example:
+        - Tried different browsers (Chrome, Firefox, Safari)
+        - Cleared browser cache and cookies
+        - Tried using different devices
+        - Attempted access during off-peak hours
+        - Refreshed page multiple times

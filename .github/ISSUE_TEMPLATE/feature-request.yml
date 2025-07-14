@@ -1,0 +1,149 @@
+name: ✨ Feature Request
+description: Request a new feature for the activities system
+title: "[FEATURE] "
+labels: ["enhancement", "needs-triage"]
+assignees: ["copilot"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting a new feature! This template helps us understand your needs and implement the right solution.
+        
+        **Before submitting:** Please check if this feature has already been requested.
+
+  - type: textarea
+    id: feature-summary
+    attributes:
+      label: "🎯 Feature Summary"
+      description: "What new functionality do you need? Provide a clear, concise summary."
+      placeholder: "Example: Add ability to set maximum enrollment limits for each activity"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem-statement
+    attributes:
+      label: "❓ What problem does this solve?"
+      description: "Describe the current problem or limitation that this feature would address"
+      placeholder: "Example: Currently, activities can have unlimited sign-ups, which creates problems when activities have space constraints or equipment limitations."
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: "💡 Proposed Solution"
+      description: "Describe your ideal solution. How should this feature work?"
+      placeholder: |
+        Example: 
+        - Add an 'enrollment_limit' field to each activity
+        - Display remaining spots on the activity card
+        - Prevent sign-ups when limit is reached
+        - Show 'Activity Full' message instead of sign-up button
+    validations:
+      required: true
+
+  - type: dropdown
+    id: user-type
+    attributes:
+      label: "👥 Who would use this feature?"
+      description: "Select the primary users who would benefit"
+      options:
+        - "Students"
+        - "Teachers/Staff"
+        - "Administrators"
+        - "Parents"
+        - "All users"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component-area
+    attributes:
+      label: "🏗️ What part of the system should this affect?"
+      description: "Where should this feature be implemented?"
+      options:
+        - "Activity listings and cards"
+        - "Sign-up process"
+        - "User dashboard/profile"
+        - "Admin/management interface"
+        - "Search and filtering"
+        - "Notifications/messaging"
+        - "Data reporting"
+        - "User authentication"
+        - "Other (please specify)"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: "🎯 How important is this feature?"
+      description: "Help us prioritize development"
+      options:
+        - "🔴 Critical - Blocking daily operations"
+        - "🟠 High - Would significantly improve experience"
+        - "🟡 Medium - Nice to have improvement"
+        - "🟢 Low - Minor enhancement"
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: "✅ Acceptance Criteria"
+      description: "How will we know this feature is complete? What specific functionality must work?"
+      placeholder: |
+        - [ ] Teachers can set enrollment limits when creating activities
+        - [ ] Activity cards show "X spots remaining" when limit is set
+        - [ ] Sign-up button is disabled when activity is full
+        - [ ] Students see clear message when activity is full
+        - [ ] Admin can view enrollment status for all activities
+    validations:
+      required: true
+
+  - type: textarea
+    id: user-stories
+    attributes:
+      label: "📖 User Stories"
+      description: "Describe specific scenarios where this feature would be used"
+      placeholder: |
+        - As a teacher, I want to limit Drama Club to 20 students so that everyone can participate meaningfully
+        - As a student, I want to see how many spots are left so I can decide whether to sign up quickly
+        - As an administrator, I want to see which activities are reaching capacity for planning purposes
+    validations:
+      required: true
+
+  - type: textarea
+    id: technical-considerations
+    attributes:
+      label: "🔧 Technical Considerations"
+      description: "Any technical requirements, constraints, or suggestions for implementation"
+      placeholder: |
+        Example:
+        - Should work with existing database structure
+        - Need to handle concurrent sign-ups gracefully
+        - Consider mobile-responsive design
+        - May need email notifications for waitlists
+
+  - type: textarea
+    id: alternatives-considered
+    attributes:
+      label: "🤔 Alternative Solutions"
+      description: "Have you considered other ways to solve this problem? What didn't work?"
+      placeholder: "Example: Considered using external registration system, but want to keep everything integrated in one place."
+
+  - type: checkboxes
+    id: implementation-hints
+    attributes:
+      label: "💭 Implementation Hints (for developers)"
+      description: "Check any that might be relevant for implementation"
+      options:
+        - label: "Requires database schema changes"
+        - label: "Needs new API endpoints"
+        - label: "Requires frontend UI changes"
+        - label: "Should include automated testing"
+        - label: "May need email notifications"
+        - label: "Should be configurable by admins"
+        - label: "Needs to work on mobile devices"
+        - label: "Consider accessibility requirements"

@@ -1,0 +1,182 @@
+name: ♿ Accessibility Improvement
+description: Request accessibility enhancements for students with disabilities
+title: "[ACCESSIBILITY] "
+labels: ["accessibility", "enhancement", "needs-triage"]
+assignees: ["copilot"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to request accessibility improvements that will help students with disabilities use the activities system effectively.
+        
+        Accessibility improvements benefit all users and are important for inclusive education.
+
+  - type: dropdown
+    id: accessibility-type
+    attributes:
+      label: "♿ What type of accessibility improvement is needed?"
+      description: "Select the accessibility area that needs attention"
+      options:
+        - "Visual accessibility (screen readers, contrast, text size)"
+        - "Motor accessibility (keyboard navigation, click targets)"
+        - "Hearing accessibility (audio content, captions)"
+        - "Cognitive accessibility (clear language, simple navigation)"
+        - "Multiple accessibility areas"
+        - "General accessibility compliance"
+    validations:
+      required: true
+
+  - type: textarea
+    id: accessibility-barrier
+    attributes:
+      label: "🚧 Current Accessibility Barrier"
+      description: "Describe what currently prevents or makes it difficult for students with disabilities to use the system"
+      placeholder: |
+        Example:
+        - Screen reader cannot properly read activity descriptions
+        - Sign-up buttons are too small for students with motor difficulties
+        - Color-only indicators don't work for colorblind students
+        - Complex navigation is confusing for students with cognitive disabilities
+    validations:
+      required: true
+
+  - type: dropdown
+    id: affected-disabilities
+    attributes:
+      label: "👥 Which students would benefit from this improvement?"
+      description: "Select the primary group that would benefit (you can elaborate in the description)"
+      options:
+        - "Students who are blind or have low vision"
+        - "Students with motor disabilities"
+        - "Students who are deaf or hard of hearing"
+        - "Students with cognitive disabilities"
+        - "Students with multiple disabilities"
+        - "All students with disabilities"
+        - "Students using assistive technology"
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-difficulty
+    attributes:
+      label: "😔 Current User Experience Difficulty"
+      description: "Describe the specific challenges students face when trying to use this feature"
+      placeholder: |
+        Example:
+        - Students using screen readers hear "button" but don't know what the button does
+        - Students with limited mobility cannot reach small click targets
+        - Students with dyslexia struggle with complex language and instructions
+        - Keyboard-only users get trapped in certain interface elements
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: "💡 Proposed Accessibility Solution"
+      description: "Describe how you envision this accessibility issue being resolved"
+      placeholder: |
+        Example:
+        - Add descriptive labels for all buttons and links
+        - Increase button size and spacing for easier clicking
+        - Ensure all interactive elements work with keyboard navigation
+        - Use high contrast colors and add text alternatives to color-coded information
+        - Simplify language and provide clear instructions
+    validations:
+      required: true
+
+  - type: dropdown
+    id: accessibility-standards
+    attributes:
+      label: "📋 Accessibility Standards"
+      description: "Are there specific accessibility standards this should meet?"
+      options:
+        - "WCAG 2.1 Level AA (recommended web standard)"
+        - "Section 508 (US federal accessibility requirement)"
+        - "School district accessibility requirements"
+        - "ADA compliance"
+        - "Not sure - please recommend appropriate standards"
+    validations:
+      required: true
+
+  - type: textarea
+    id: assistive-technology
+    attributes:
+      label: "🖥️ Assistive Technology Compatibility"
+      description: "What assistive technologies should this work with?"
+      placeholder: |
+        Example:
+        - Screen readers (JAWS, NVDA, VoiceOver)
+        - Voice control software
+        - Switch navigation devices
+        - Screen magnification software
+        - Alternative keyboards or pointing devices
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: "✅ Acceptance Criteria"
+      description: "How will we know this accessibility improvement is complete and effective?"
+      placeholder: |
+        - [ ] All content is accessible with screen readers
+        - [ ] All functionality works with keyboard-only navigation
+        - [ ] Color contrast meets WCAG AA standards
+        - [ ] Click targets are at least 44x44 pixels
+        - [ ] All images have appropriate alt text
+        - [ ] Forms have clear labels and error messages
+        - [ ] Page structure uses proper headings
+    validations:
+      required: true
+
+  - type: textarea
+    id: testing-requirements
+    attributes:
+      label: "🧪 Testing Requirements"
+      description: "How should this accessibility improvement be tested?"
+      placeholder: |
+        Example:
+        - Test with actual screen reader software
+        - Verify keyboard navigation works completely
+        - Check color contrast with automated tools
+        - Test with students who use assistive technology
+        - Validate against WCAG 2.1 guidelines
+
+  - type: dropdown
+    id: priority-justification
+    attributes:
+      label: "🎯 Priority Level"
+      description: "How urgent is this accessibility improvement?"
+      options:
+        - "🔴 Critical - Students currently cannot use essential features"
+        - "🟠 High - Students have significant difficulty using features"
+        - "🟡 Medium - Students can use features but with challenges"
+        - "🟢 Low - Nice-to-have improvement for better experience"
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-workarounds
+    attributes:
+      label: "🛠️ Current Workarounds"
+      description: "Are there any temporary solutions students are currently using?"
+      placeholder: |
+        Example:
+        - Students ask teachers to help them sign up for activities
+        - Students use browser zoom to make text larger
+        - Students have to get help from classmates
+        - Teachers print out activity information for students
+
+  - type: checkboxes
+    id: implementation-considerations
+    attributes:
+      label: "🔧 Implementation Considerations"
+      description: "Check any relevant technical considerations"
+      options:
+        - label: "Should maintain existing functionality for all users"
+        - label: "Needs to work across all browsers and devices"
+        - label: "Should include automated accessibility testing"
+        - label: "May require updates to CSS and styling"
+        - label: "Should include user training/documentation"
+        - label: "Needs validation with real assistive technology users"
