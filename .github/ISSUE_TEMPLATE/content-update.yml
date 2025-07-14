@@ -1,0 +1,152 @@
+name: 📝 Content Update Request
+description: Request updates to activity information, descriptions, or school content
+title: "[CONTENT] "
+labels: ["content", "needs-triage"]
+assignees: ["copilot"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to request updates to activity information, descriptions, school policies, or other content in the system.
+        
+        This helps maintain accurate and up-to-date information for students and parents.
+
+  - type: dropdown
+    id: content-type
+    attributes:
+      label: "📂 What type of content needs updating?"
+      description: "Select the category of content that needs changes"
+      options:
+        - "Activity descriptions and details"
+        - "Activity meeting times/schedules"
+        - "Teacher/sponsor information"
+        - "School policies or rules"
+        - "Contact information"
+        - "Website text and messaging"
+        - "Student instructions"
+        - "Help documentation"
+        - "Other content (specify below)"
+    validations:
+      required: true
+
+  - type: input
+    id: specific-activity
+    attributes:
+      label: "🎭 Specific Activity (if applicable)"
+      description: "If this relates to a specific activity, please name it"
+      placeholder: "Example: Drama Club, Math Olympiad, Student Council"
+
+  - type: textarea
+    id: current-content
+    attributes:
+      label: "📄 Current Content"
+      description: "What is the current text/information that needs to be changed?"
+      placeholder: |
+        Example: 
+        Current description: "Drama Club meets every Tuesday after school"
+        Current meeting time: "3:30 PM"
+    validations:
+      required: true
+
+  - type: textarea
+    id: requested-changes
+    attributes:
+      label: "✏️ Requested Changes"
+      description: "What should the new content say? Provide the exact text you want to use."
+      placeholder: |
+        Example:
+        New description: "Drama Club meets every Tuesday and Thursday after school to prepare for our spring musical. New members welcome!"
+        New meeting time: "3:30 PM - 5:00 PM"
+        New location: "Auditorium"
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason-for-change
+    attributes:
+      label: "🤔 Reason for Change"
+      description: "Why does this content need to be updated?"
+      placeholder: |
+        Example:
+        - Schedule changed due to auditorium renovations
+        - Teacher sponsor changed
+        - Activity requirements updated
+        - Information was outdated or incorrect
+    validations:
+      required: true
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: "⏰ How urgent is this update?"
+      description: "When does this content need to be updated?"
+      options:
+        - "🔴 Immediate - Affects current activities/operations"
+        - "🟠 This week - Affects upcoming events"
+        - "🟡 This month - For next semester/term"
+        - "🟢 No rush - When convenient"
+    validations:
+      required: true
+
+  - type: textarea
+    id: affected-users
+    attributes:
+      label: "👥 Who needs to see these changes?"
+      description: "Which users will be affected by this content update?"
+      placeholder: |
+        Example:
+        - Current Drama Club members (25 students)
+        - Students interested in joining
+        - Parents looking for activity information
+        - All students browsing activities
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: "✅ Acceptance Criteria"
+      description: "How will we know the content update is complete and correct?"
+      placeholder: |
+        - [ ] Activity description reflects new meeting schedule
+        - [ ] Meeting time shows "Tuesday & Thursday 3:30-5:00 PM"
+        - [ ] Location updated to "Auditorium"
+        - [ ] Changes are visible to all users immediately
+        - [ ] No spelling or grammar errors in new content
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-requirements
+    attributes:
+      label: "📋 Additional Requirements"
+      description: "Any other requirements for this content update?"
+      placeholder: |
+        Example:
+        - Please ensure content follows school writing style guidelines
+        - Include contact information for the new sponsor
+        - Add note about equipment or materials needed
+        - Mention any prerequisites for joining
+
+  - type: checkboxes
+    id: content-verification
+    attributes:
+      label: "🔍 Content Verification"
+      description: "Please confirm the following about your requested changes"
+      options:
+        - label: "I have verified this information is accurate and current"
+        - label: "I have approval from relevant teachers/administrators"
+        - label: "This content follows school policies and guidelines"
+        - label: "The spelling and grammar have been checked"
+        - label: "This won't conflict with other activity information"
+
+  - type: textarea
+    id: contact-for-verification
+    attributes:
+      label: "📞 Contact for Verification"
+      description: "Who can we contact to verify these changes if needed?"
+      placeholder: |
+        Example:
+        Teacher: Ms. Johnson (Drama Club sponsor)
+        Email: m.johnson@mergington.edu
+        Extension: 1234

@@ -1,0 +1,113 @@
+name: 🐛 Bug Report
+description: Report a problem with the activities system
+title: "[BUG] "
+labels: ["bug", "needs-triage"]
+assignees: ["copilot"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to report a bug! This template will help us understand the issue and resolve it quickly.
+        
+        **Before submitting:** Please check if this issue has already been reported.
+
+  - type: textarea
+    id: problem-description
+    attributes:
+      label: "📝 Problem Description"
+      description: "What exactly is not working? Be specific about what you expected to happen vs. what actually happened."
+      placeholder: "Example: When I try to sign up a student for the Drama Club, the form submits but the student doesn't appear in the participant list."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: "🔄 Steps to Reproduce"
+      description: "Please provide step-by-step instructions to reproduce the issue"
+      placeholder: |
+        1. Go to the activities page
+        2. Click on 'Drama Club'
+        3. Enter student email: jane.doe@mergington.edu
+        4. Click 'Sign Up'
+        5. Check the participant list
+        6. Student is not listed
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: "🎯 What part of the system is affected?"
+      description: "Select the component where you're experiencing the issue"
+      options:
+        - "Student sign-up process"
+        - "Activity listings/display"
+        - "User login/authentication"
+        - "Activity creation/management"
+        - "Student data/records"
+        - "Website layout/design"
+        - "Search and filtering"
+        - "Other (please specify in description)"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: "🚨 How urgent is this issue?"
+      description: "Help us prioritize the fix"
+      options:
+        - "🔴 Critical - System is completely broken"
+        - "🟠 High - Major feature not working"
+        - "🟡 Medium - Minor feature issue"
+        - "🟢 Low - Cosmetic or nice-to-have fix"
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-impact
+    attributes:
+      label: "📊 Current Impact"
+      description: "How is this issue affecting students, teachers, or daily operations?"
+      placeholder: "Example: Students cannot register for activities, affecting 50+ students trying to sign up for fall semester activities."
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: "✅ Acceptance Criteria"
+      description: "How will we know this issue is fixed? What should work correctly?"
+      placeholder: |
+        - [ ] Students can successfully sign up for activities
+        - [ ] Student names appear in the participant list immediately after signup
+        - [ ] Email confirmation is sent to the student
+        - [ ] Activity participant count updates correctly
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: "📋 Additional Context"
+      description: "Any other information that might help (browser, device, error messages, screenshots)"
+      placeholder: |
+        - Browser: Chrome/Firefox/Safari
+        - Device: Desktop/Mobile/Tablet
+        - Error messages (if any):
+        - Screenshots (drag and drop here):
+
+  - type: checkboxes
+    id: technical-details
+    attributes:
+      label: "🔧 Technical Information (for developers)"
+      description: "Check all that apply to help developers debug faster"
+      options:
+        - label: "Issue occurs on multiple browsers"
+        - label: "Issue occurs on mobile devices"
+        - label: "Console errors are visible (F12 Developer Tools)"
+        - label: "Issue is reproducible every time"
+        - label: "Issue started after a recent change"
+        - label: "Related to user authentication/login"
+        - label: "Related to database/data storage"

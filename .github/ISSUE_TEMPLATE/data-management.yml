@@ -1,0 +1,175 @@
+name: 📊 Data Management Issue
+description: Issues with student data, enrollment records, or data handling
+title: "[DATA] "
+labels: ["data", "needs-triage"]
+assignees: ["copilot"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for issues related to student data, enrollment records, data accuracy, or data management processes.
+        
+        **Important:** Do not include actual student personal information in this issue description.
+
+  - type: dropdown
+    id: data-issue-type
+    attributes:
+      label: "🗃️ What type of data issue is this?"
+      description: "Select the category that best describes the problem"
+      options:
+        - "Student enrollment data is incorrect"
+        - "Missing student records"
+        - "Duplicate student entries"
+        - "Activity participation records are wrong"
+        - "Data not saving properly"
+        - "Data not displaying correctly"
+        - "Need to bulk import/export data"
+        - "Data backup or recovery issue"
+        - "Privacy/security concern"
+        - "Other data management issue"
+    validations:
+      required: true
+
+  - type: textarea
+    id: data-problem-description
+    attributes:
+      label: "📝 Data Problem Description"
+      description: "Describe the data issue without including personal student information"
+      placeholder: |
+        Example:
+        - Several students appear enrolled in activities they never signed up for
+        - Student count for Drama Club shows 15 but only 10 students are actually participating
+        - When students sign up, their information isn't being saved correctly
+        - Cannot find enrollment records for students who signed up last week
+    validations:
+      required: true
+
+  - type: input
+    id: affected-activity
+    attributes:
+      label: "🎭 Affected Activity (if applicable)"
+      description: "If this relates to a specific activity, name it here"
+      placeholder: "Example: Basketball Team, Science Club, Student Government"
+
+  - type: dropdown
+    id: data-scope
+    attributes:
+      label: "📏 How widespread is this issue?"
+      description: "How much data is affected?"
+      options:
+        - "Single student record"
+        - "One activity (multiple students)"
+        - "Multiple activities"
+        - "All activities"
+        - "Entire system"
+        - "Specific time period (specify below)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: when-noticed
+    attributes:
+      label: "📅 When was this issue first noticed?"
+      description: "When did you first discover this data problem?"
+      placeholder: |
+        Example:
+        - Noticed today when generating attendance reports
+        - Students reported issues signing up last week
+        - During routine data review on [specific date]
+        - After the system update on [date]
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-data-state
+    attributes:
+      label: "✅ What should the data look like?"
+      description: "Describe how the data should be correctly recorded or displayed"
+      placeholder: |
+        Example:
+        - Drama Club should show exactly 12 enrolled students
+        - Each student should only appear once per activity
+        - Sign-up dates should match when students actually registered
+        - Student emails should be properly formatted and unique
+    validations:
+      required: true
+
+  - type: dropdown
+    id: data-urgency
+    attributes:
+      label: "🚨 How urgent is this data issue?"
+      description: "What's the impact of this data problem?"
+      options:
+        - "🔴 Critical - Preventing daily operations"
+        - "🟠 High - Affecting current activities/reports"
+        - "🟡 Medium - Causing confusion but workable"
+        - "🟢 Low - Minor discrepancy that can wait"
+    validations:
+      required: true
+
+  - type: textarea
+    id: data-impact
+    attributes:
+      label: "📊 Current Impact"
+      description: "How is this data issue affecting students, teachers, or operations?"
+      placeholder: |
+        Example:
+        - Teachers can't take accurate attendance
+        - Students are confused about their enrollment status
+        - Reports for administration are inaccurate
+        - Cannot track activity participation properly
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: "✅ Acceptance Criteria"
+      description: "How will we know this data issue is resolved?"
+      placeholder: |
+        - [ ] All student enrollment records are accurate
+        - [ ] No duplicate entries exist
+        - [ ] Participation counts match actual enrolled students
+        - [ ] Data integrity checks pass
+        - [ ] Reports generate correct information
+        - [ ] Students can view their correct enrollment status
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: data-verification
+    attributes:
+      label: "🔍 Data Verification Steps Needed"
+      description: "Check what types of verification might be needed"
+      options:
+        - label: "Compare with paper records or backups"
+        - label: "Verify with teachers/activity sponsors"
+        - label: "Check with affected students directly"
+        - label: "Review system logs for data changes"
+        - label: "Run data integrity checks"
+        - label: "Cross-reference with email confirmations"
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: "📋 Additional Context"
+      description: "Any other relevant information about this data issue"
+      placeholder: |
+        Example:
+        - This started happening after the recent system update
+        - Similar issues occurred last semester
+        - May be related to specific browser or device
+        - Have backup data available from [date]
+        - Related to bulk import that was done on [date]
+
+  - type: checkboxes
+    id: data-security
+    attributes:
+      label: "🔐 Data Security Considerations"
+      description: "Check if any of these apply to this issue"
+      options:
+        - label: "May involve student privacy concerns"
+        - label: "Requires admin-level access to resolve"
+        - label: "Backup of current data should be made before fixes"
+        - label: "May need to notify affected students/parents"
+        - label: "Requires coordination with school administration"

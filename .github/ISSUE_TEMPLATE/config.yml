@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📚 Documentation
+    url: https://github.com/inventdevinc/skills-expand-your-team-with-copilot/blob/main/docs/how-to-develop.md
+    about: Check our development documentation for setup and usage information
+  - name: 💬 Discussions
+    url: https://github.com/inventdevinc/skills-expand-your-team-with-copilot/discussions
+    about: Ask questions and discuss ideas with the community
