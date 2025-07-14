@@ -2,14 +2,130 @@
 MongoDB database configuration and setup for Mergington High School API
 """
 
-from pymongo import MongoClient
-from argon2 import PasswordHasher
+try:
+    from pymongo import MongoClient
+    from argon2 import PasswordHasher
 
-# Connect to MongoDB
-client = MongoClient('mongodb://localhost:27017/')
-db = client['mergington_high']
-activities_collection = db['activities']
-teachers_collection = db['teachers']
+    # Try to connect to MongoDB
+    client = MongoClient('mongodb://localhost:27017/', serverSelectionTimeoutMS=1000)
+    client.server_info()  # Test connection
+    db = client['mergington_high']
+    activities_collection = db['activities']
+    teachers_collection = db['teachers']
+    
+except Exception:
+    # Fallback to mock database for development/testing
+    print("MongoDB not available, using mock database")
+    
+    from argon2 import PasswordHasher
+    
+    # Mock collections using dictionaries
+    activities_collection_data = {}
+    teachers_collection_data = {}
+
+    # Mock collection class
+    class MockCollection:
+        def __init__(self, data):
+            self.data = data
+        
+        def count_documents(self, filter_dict):
+            return len(self.data)
+        
+        def insert_one(self, document):
+            id_field = document.get("_id")
+            self.data[id_field] = {k: v for k, v in document.items() if k != "_id"}
+            return type('MockResult', (), {'inserted_id': id_field})()
+        
+        def find(self, filter_dict=None):
+            if filter_dict is None:
+                filter_dict = {}
+            
+            results = []
+            for id_val, doc in self.data.items():
+                doc_copy = {"_id": id_val, **doc}
+                
+                # Simple filter matching - this is a basic implementation
+                match = True
+                for key, value in filter_dict.items():
+                    if isinstance(value, dict):
+                        if "$in" in value:
+                            if key not in doc_copy or not any(item in doc_copy[key] for item in value["$in"]):
+                                match = False
+                                break
+                        elif "$gte" in value:
+                            if key not in doc_copy or doc_copy[key] < value["$gte"]:
+                                match = False
+                                break
+                        elif "$lte" in value:
+                            if key not in doc_copy or doc_copy[key] > value["$lte"]:
+                                match = False
+                                break
+                        elif "$exists" in value:
+                            field_exists = key in doc_copy
+                            if value["$exists"] != field_exists:
+                                match = False
+                                break
+                    else:
+                        if key not in doc_copy or doc_copy[key] != value:
+                            match = False
+                            break
+                
+                if match:
+                    results.append(doc_copy)
+            
+            return results
+        
+        def find_one(self, filter_dict):
+            results = self.find(filter_dict)
+            return results[0] if results else None
+        
+        def update_one(self, filter_dict, update_dict):
+            # Find matching document
+            for id_val, doc in self.data.items():
+                doc_copy = {"_id": id_val, **doc}
+                
+                match = True
+                for key, value in filter_dict.items():
+                    if key not in doc_copy or doc_copy[key] != value:
+                        match = False
+                        break
+                
+                if match:
+                    # Apply updates
+                    for op, updates in update_dict.items():
+                        if op == "$push":
+                            for field, value in updates.items():
+                                if field not in self.data[id_val]:
+                                    self.data[id_val][field] = []
+                                self.data[id_val][field].append(value)
+                        elif op == "$pull":
+                            for field, value in updates.items():
+                                if field in self.data[id_val] and isinstance(self.data[id_val][field], list):
+                                    self.data[id_val][field] = [item for item in self.data[id_val][field] if item != value]
+                    
+                    return type('MockResult', (), {'modified_count': 1})()
+            
+            return type('MockResult', (), {'modified_count': 0})()
+        
+        def aggregate(self, pipeline):
+            # Basic aggregation support for getting unique days
+            results = []
+            if len(pipeline) >= 2 and pipeline[0].get("$unwind") == "$schedule_details.days":
+                # Get all unique days
+                days = set()
+                for doc in self.data.values():
+                    if "schedule_details" in doc and "days" in doc["schedule_details"]:
+                        for day in doc["schedule_details"]["days"]:
+                            days.add(day)
+                
+                for day in sorted(days):
+                    results.append({"_id": day})
+            
+            return results
+
+    # Mock collections
+    activities_collection = MockCollection(activities_collection_data)
+    teachers_collection = MockCollection(teachers_collection_data)
 
 # Methods
 def hash_password(password):
@@ -41,7 +157,8 @@ initial_activities = {
             "end_time": "16:45"
         },
         "max_participants": 12,
-        "participants": ["michael@mergington.edu", "daniel@mergington.edu"]
+        "participants": ["michael@mergington.edu", "daniel@mergington.edu"],
+        "difficulty": "Beginner"
     },
     "Programming Class": {
         "description": "Learn programming fundamentals and build software projects",
@@ -52,7 +169,8 @@ initial_activities = {
             "end_time": "08:00"
         },
         "max_participants": 20,
-        "participants": ["emma@mergington.edu", "sophia@mergington.edu"]
+        "participants": ["emma@mergington.edu", "sophia@mergington.edu"],
+        "difficulty": "Intermediate"
     },
     "Morning Fitness": {
         "description": "Early morning physical training and exercises",
@@ -118,7 +236,8 @@ initial_activities = {
             "end_time": "08:00"
         },
         "max_participants": 10,
-        "participants": ["james@mergington.edu", "benjamin@mergington.edu"]
+        "participants": ["james@mergington.edu", "benjamin@mergington.edu"],
+        "difficulty": "Intermediate"
     },
     "Debate Team": {
         "description": "Develop public speaking and argumentation skills",
@@ -140,7 +259,8 @@ initial_activities = {
             "end_time": "14:00"
         },
         "max_participants": 15,
-        "participants": ["ethan@mergington.edu", "oliver@mergington.edu"]
+        "participants": ["ethan@mergington.edu", "oliver@mergington.edu"],
+        "difficulty": "Advanced"
     },
     "Science Olympiad": {
         "description": "Weekend science competition preparation for regional and state events",
@@ -151,7 +271,8 @@ initial_activities = {
             "end_time": "16:00"
         },
         "max_participants": 18,
-        "participants": ["isabella@mergington.edu", "lucas@mergington.edu"]
+        "participants": ["isabella@mergington.edu", "lucas@mergington.edu"],
+        "difficulty": "Advanced"
     },
     "Sunday Chess Tournament": {
         "description": "Weekly tournament for serious chess players with rankings",
